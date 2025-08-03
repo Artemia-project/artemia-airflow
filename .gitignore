@@ -1,1 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment files
 .env
+.venv/
+venv/
+ENV/
+env/
+*.env
+
+# Airflow-specific
+airflow.db
+airflow.sqlite
+logs/
+unittests.cfg
+airflow.cfg
+webserver_config.py
+
+# Airflow dags/output
+dags/__pycache__/
+dags/*.pyc
+dags/*.pyo
+dags/*.log
+
+# Airflow plugins
+plugins/__pycache__/
+plugins/*.pyc
+plugins/*.pyo
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+.cache/
+
+# Docker / Compose
+docker-compose.override.yml
+**/__airflow.db
+**/airflow.db-journal
