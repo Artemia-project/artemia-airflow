@@ -10,9 +10,10 @@ default_args = {
 
 with DAG(
     dag_id='call_azure_function_dag',
+    dagrun_timeout=timedelta(hours=2),
     default_args=default_args,
     description='DAG to call Azure Function',
-    schedule='@daily',  # ← 여기 수정
+    schedule='@daily',
     start_date=datetime.now() - timedelta(days=1),
     catchup=False,
     tags=['azure', 'http'],
