@@ -26,6 +26,11 @@ with DAG(
         endpoint='api/hello1?',
         headers={"Content-Type": "application/json"},
         log_response=True,
+        
+        retries=3,
+        retry_delay=timedelta(minutes=3),
+        retry_exponential_backoff=True,
+        max_retry_delay=timedelta(minutes=10),
     )
 
     call_azure_function
