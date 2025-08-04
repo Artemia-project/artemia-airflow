@@ -39,8 +39,9 @@ with DAG(
         method='POST',
         http_conn_id='powerautomate_webhook',
         endpoint='',
-        data='Sucess! Azure Function API Call',
+        data='{"message":"Success! Azure Function API Call"}',
         trigger_rule='all_success',
+        headers={"Content-Type": "application/json"},
         log_response=True,
     )
 
@@ -50,8 +51,9 @@ with DAG(
         method='POST',
         http_conn_id='powerautomate_webhook',
         endpoint='',
-        data='Failed! Azure Function API Call',
+        data='{"message":"Failed! Azure Function API Call"}',
         trigger_rule='all_failed',
+        headers={"Content-Type": "application/json"},
         log_response=True,
     )
 
