@@ -33,4 +33,27 @@ with DAG(
         max_retry_delay=timedelta(minutes=10),
     )
 
-    call_azure_function
+    # Success notification task
+    notify_success = HttpOperator(
+        task_id='notify_success',
+        method='POST',
+        http_conn_id='powerautomate_webhook',
+        endpoint='',
+        data='Sucess! Azure Function API Call',
+        trigger_rule='all_success',
+        log_response=True,
+    )
+
+    # Failure notification task
+    notify_failure = HttpOperator(
+        task_id='notify_failure',
+        method='POST',
+        http_conn_id='powerautomate_webhook',
+        endpoint='',
+        data='Failed! Azure Function API Call',
+        trigger_rule='all_failed',
+        log_response=True,
+    )
+
+    # Set up task dependencies
+    call_azure_function >> [notify_success, notify_failure]
