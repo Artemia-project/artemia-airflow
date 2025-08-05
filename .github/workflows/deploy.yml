@@ -27,5 +27,5 @@ jobs:
       - name: SSH and deploy
         run: |
           ssh -o LogLevel=ERROR ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
-            sh /home/azureuser/startup.sh
+            sh /home/azureuser/startup.sh > /dev/null 2>&1
           EOF
