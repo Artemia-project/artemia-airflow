@@ -79,7 +79,7 @@ with DAG(
     dag_id='update_tourism_from_exhibition_dag',
     default_args=default_args,
     description='Triggers a GitHub Action, waits for completion, and then notifies the result.',
-    schedule='0 15 * * *',
+    schedule='0 0 * * *',
     start_date=pendulum.datetime(2023, 1, 1, tz="Asia/Seoul"),
     catchup=False,
     tags=['data-pipeline', 'github-action', 'http-sensor'],
